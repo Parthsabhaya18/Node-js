@@ -11,26 +11,31 @@ const server=http.createServer((req,res)=>{
                     body+=chunk.toString();
                 })
                 req.on('end',()=>{
+                    console.log(body);
                     let payload=querystring.parse(body)
+                    console.log(payload);
                     let name=payload.name
                     let email=payload.email
                     let password=payload.password
 
-                    fs.appendFile('./form.txt',`name="${name}",email="${email}",password="${password}"`
+                    fs.appendFile('./form.txt',`\nname=${name},\nemail=${email},\npassword=${password}\n`
                         ,(err)=>{
                         if(err){
-                            res.writeHead(500,{'content-type':'text/html'})
-                            console.log(`<h1>Internal server error`);
                             console.log(err);
+                            res.writeHead(500,{'content-type':'text/html'})
+                            res.end(`<h1>Internal server error</h1>`);
                         }
                         else{
                             res.writeHead(200,{'content-type':'text/html'})
-                            console.log("Sucessfully Submitted..");
-                            
+                            res.end("<h1>Sucessfully Submitted..</h1>");
                         }
                         
                     })
                 })
+            }
+            else{
+                res.writeHead(400,{"content-type":"text/html"})
+                res.end('<h1>Bad Request</h1>')
             }
         }
     else{

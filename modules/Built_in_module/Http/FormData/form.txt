@@ -1,1 +1,19 @@
-name="pa",email="p@gmail.com",password="26"/n
+name=hello,
+email=p@gmail.com,
+password=bye
+
+name=zaru,
+email=z@gmai.com,
+password=77
+
+name=zaru,
+email=z@gmai.com,
+password=77
+
+name=parth sabhaya,
+email=parthsabhaya2223@gmail.com,
+password=Admin@123
+
+name=chirag,
+email=chirag@gmail.com,
+password=123345676rf 
